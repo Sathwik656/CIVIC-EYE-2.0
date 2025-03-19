@@ -1,0 +1,35 @@
+<!-- Dashboard Prompt Modal -->
+<div id="dashboardPromptModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeDashboardPrompt()">&times;</span>
+        <h2>Please Login</h2>
+        <p>Please login to access the Dashboard.</p>
+        <button onclick="switchToLogin()">Login Now</button>
+    </div>
+</div>
+
+<script>
+    // Open dashboard prompt modal
+    function openDashboardPrompt() {
+        document.getElementById("dashboardPromptModal").style.display = "flex";
+    }
+
+    // Close dashboard prompt modal
+    function closeDashboardPrompt() {
+        document.getElementById("dashboardPromptModal").style.display = "none";
+    }
+
+    // Switch from dashboard prompt to login modal
+    function switchToLogin() {
+        closeDashboardPrompt();
+        openModal();
+    }
+
+    // Intercept Dashboard link clicks: if not logged in, open the dashboard prompt modal
+    document.getElementById("dashboardLink").addEventListener("click", function (e) {
+        if (!localStorage.getItem("loggedIn")) {
+            e.preventDefault();
+            openDashboardPrompt();
+        }
+    });
+</script>
